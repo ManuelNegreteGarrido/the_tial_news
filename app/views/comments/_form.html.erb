@@ -1,0 +1,30 @@
+<%= form_with(model: comment, url: news_comment_path(comment.news, comment)) do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :description, "Descripción", class: "form-label mb-3" %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.hidden_field :news_id, value: @comment.news.id %>
+  </div>
+
+  <div>
+    <%= form.submit "Editar", class: "btn btn-warning" %>
+  </div>
+<% end %>

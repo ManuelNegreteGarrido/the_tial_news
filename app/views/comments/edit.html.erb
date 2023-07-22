@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col-lg-5">
+    <h2 class="mb-5">Editando...</h2>
+    <%= render "form", comment: @comment %><br>
+    <div class="d-flex justify-content-center">
+      <%= link_to "Volver a la noticia", show_and_new_comment_news_path(@comment.news), class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</div>
+
+
+
+
+

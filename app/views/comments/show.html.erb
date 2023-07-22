@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-lg-6">
+    <p style="color: green"><%= notice %></p>
+    <%= render @comment %>
+    <div class="d-flex justify-content-end mt-3 mb-5">
+      <% if current_user.id == @comment.user.id %>
+        <%= link_to "Editar", edit_news_comment_path(@comment), class: "btn btn-warning me-3" %> 
+    
+        <%= button_to "Borrar", news_comment_path(@comment), method: :delete, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= link_to "Volver a la noticia", show_and_new_comment_news_path(@comment.news), class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+</div>

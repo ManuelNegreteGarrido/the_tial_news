@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col">
+    <%= render @news %>
+
+    <div class="d-flex justify-content-center">
+      <%= link_to "Volver a noticias", news_index_path, class: "btn btn-outline-primary mb-5" %>
+    </div>
+   </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h5>Comentarios</h5>
+
+    <% if user_signed_in? %>
+      <%= render 'form_comments', comment: @comment %>
+    <% else %>
+      <p>Debes estar 
+      <%= link_to "registrado", new_user_session_path %>
+      para poder comentar</p>
+    <% end %>
+
+    <div id="comments">
+      <% @comments.each do |comment| %>
+        <%= render comment %>
+        <div class="d-flex justify-content-end">
+          <%= link_to "Mostar comentario", news_comment_path(comment.news, comment), class: "btn btn-outline-primary mt-2 mb-3" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
